@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Professional Registration Form</title>
+
+<!-- Google Fonts + Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+    margin: 0; padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 850px;
+    background: #fff;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    border: 2px solid #d9e3ff;
+}
+
+h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+h3 {
+    color: #333;
+    margin-top: 25px;
+    border-left: 5px solid #007bff;
+    padding-left: 8px;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    width: 100%;
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button:hover { background: #005dc1; }
+
+.two-col {
+    display: flex;
+    gap: 20px;
+}
+.two-col div { flex: 1; }
+
+#successPage {
+    display: none;
+}
+
+.success-box {
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+    background: #f7f9ff;
+    border: 2px solid #d0ddff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+td {
+    padding: 10px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.center { text-align:center; }
+.green-check {
+    color: green;
+    font-size: 50px;
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================================= -->
+<!-- REGISTRATION FORM -->
+<!-- ========================================================= -->
+
+<div id="formPage" class="container">
+
+    <h2><i class="fa-solid fa-id-card"></i> Professional Registration Form</h2>
+
+    <form id="regForm">
+
+        <h3>Personal Information</h3>
+
+        <div class="two-col">
+            <div>
+                <label>First Name *</label>
+                <input type="text" id="fname" required>
+            </div>
+            <div>
+                <label>Last Name *</label>
+                <input type="text" id="lname" required>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div>
+                <label>Date of Birth *</label>
+                <input type="date" id="dob" required>
+            </div>
+            <div>
+                <label>Gender *</label>
+                <select id="gender">
+                    <option>Female</option>
+                    <option>Male</option>
+                    <option>Other</option>
+                </select>
+            </div>
+        </div>
+
+        <h3>Contact Information</h3>
+
+        <label>Email *</label>
+        <input type="email" id="email" required>
+
+        <label>Phone Number *</label>
+        <input type="text" id="phone" required>
+
+        <h3>Residential Address</h3>
+
+        <label>Address Line 1 *</label>
+        <input type="text" id="add1" required>
+
+        <label>Address Line 2</label>
+        <input type="text" id="add2">
+
+        <div class="two-col">
+            <div>
+                <label>City *</label>
+                <input type="text" id="city" required>
+            </div>
+            <div>
+                <label>State *</label>
+                <input type="text" id="state" required>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div>
+                <label>Zip Code *</label>
+                <input type="text" id="zip" required>
+            </div>
+            <div>
+                <label>Country *</label>
+                <select id="country">
+                    <option>India</option>
+                    <option>USA</option>
+                    <option>UK</option>
+                </select>
+            </div>
+        </div>
+
+        <h3>Account Details</h3>
+
+        <label>Username *</label>
+        <input type="text" id="uname" required>
+
+        <label>Password *</label>
+        <input type="password" id="pass" required>
+
+        <label>Confirm Password *</label>
+        <input type="password" id="cpass" required>
+
+        <button type="submit"><i class="fa-solid fa-check-circle"></i> Complete Registration</button>
+
+    </form>
+</div>
+
+
+<!-- ========================================================= -->
+<!-- SUCCESS DISPLAY PAGE -->
+<!-- ========================================================= -->
+
+<div id="successPage" class="container">
+
+    <div class="center">
+        <i class="fa-solid fa-circle-check green-check"></i>
+        <h2 style="color: green;">Registration Successful!</h2>
+        <p>Thank you for registering. Below is a summary of the information you submitted.</p>
+    </div>
+
+    <div class="success-box">
+
+        <table>
+            <tr><td><b>Full Name:</b></td><td id="out_name"></td></tr>
+            <tr><td><b>Date of Birth:</b></td><td id="out_dob"></td></tr>
+            <tr><td><b>Gender:</b></td><td id="out_gender"></td></tr>
+            <tr><td><b>Email:</b></td><td id="out_email"></td></tr>
+            <tr><td><b>Phone:</b></td><td id="out_phone"></td></tr>
+            <tr><td><b>Address:</b></td><td id="out_address"></td></tr>
+            <tr><td><b>Username:</b></td><td id="out_uname"></td></tr>
+        </table>
+
+    </div>
+
+    <div class="center">
+        <button onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Register Another Account</button>
+    </div>
+
+</div>
+
+
+
+<script>
+// FORM SUBMISSION HANDLER
+$("#regForm").submit(function(e) {
+    e.preventDefault();
+
+    // Fill output fields
+    $("#out_name").text($("#fname").val() + " " + $("#lname").val());
+    $("#out_dob").text($("#dob").val());
+    $("#out_gender").text($("#gender").val());
+    $("#out_email").text($("#email").val());
+    $("#out_phone").text($("#phone").val());
+    $("#out_uname").text($("#uname").val());
+
+    let fullAddress =
+        $("#add1").val() + ", " +
+        $("#add2").val() + ", " +
+        $("#city").val() + ", " +
+        $("#state").val() + " - " +
+        $("#zip").val() + ", " +
+        $("#country").val();
+
+    $("#out_address").text(fullAddress);
+
+    // Switch pages
+    $("#formPage").hide();
+    $("#successPage").show();
+});
+
+// Go back button
+function goBack() {
+    $("#successPage").hide();
+    $("#formPage").show();
+    $("#regForm")[0].reset();
+}
+</script>
+
+</body>
+</html>
